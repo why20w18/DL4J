@@ -2,6 +2,9 @@ package DL4J_Temel_Perceptron;
 
 import java.util.Scanner;
 import javax.swing.JFrame;
+import javax.swing.SwingWorker;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     
@@ -10,7 +13,9 @@ public class Main {
         
         TemelPerceptron perceptron = new TemelPerceptron();
         Veriseti veriset = new Veriseti(75);
+        perceptron.randomAtamaWeight();
         
+        Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
         veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
         
         JFrame Frame = new JFrame("Grafik Gosterim");
@@ -34,7 +39,7 @@ public class Main {
         }
         */
         //----------------------2.ASAMA---
-        /*
+        
         int t=1,cx = 0;
         while(t <= 1){
         for(int i = 0 ; i < veriset.buyukluk ; i++){
@@ -50,6 +55,28 @@ public class Main {
             if(veriset.y_Out[i] == makineTahmin)
             cx++;
             
+            
+        timer.scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run() {
+            //veri setinin icindeki degerleri alacak modeliEgit metodu icinde W ayarlamasi yapacak ve egitilecek
+            perceptron.modeliEgit(
+                    veriset.x1_In[veriset.iTimer % veriset.buyukluk], 
+                    veriset.x2_In[veriset.iTimer % veriset.buyukluk], 
+                    veriset.y_Out[veriset.iTimer % veriset.buyukluk]);
+            
+        veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
+        Frame.repaint();
+        veriset.iTimer++;
+            if(veriset.iTimer == 10){
+                System.out.println("10");
+            }
+            
+            }//run
+        },0,1000);
+          
+            
+            
         }//for
         
         System.out.printf("\nBasarili Tahmin Sayisi %d , T iterasyonu %d , Basari Yuzde %f",cx,t,(double)cx/veriset.buyukluk*100);
@@ -58,11 +85,35 @@ public class Main {
         //MAX CX = 56
     t++;
     }//while
-    */    
+        
+     
         
         //----------------------3.ASAMA---
+           
+        //olusturdugumuz ekranda canlý olarak egitim surecini gormek icin timer olusturuyoruz belli
+        //surede ekran guncellensin
+        /*
+        Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
         
-        
+        timer.scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run() {
+            //veri setinin icindeki degerleri alacak modeliEgit metodu icinde W ayarlamasi yapacak ve egitilecek
+            perceptron.modeliEgit(
+                    veriset.x1_In[veriset.iTimer % veriset.buyukluk], 
+                    veriset.x2_In[veriset.iTimer % veriset.buyukluk], 
+                    veriset.y_Out[veriset.iTimer % veriset.buyukluk]);
+            
+        veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
+        Frame.repaint();
+        veriset.iTimer++;
+            if(veriset.iTimer == 10){
+                System.out.println("10");
+            }
+            
+            }//run
+        },0,100);
+      */
         
     }//main metod
     
