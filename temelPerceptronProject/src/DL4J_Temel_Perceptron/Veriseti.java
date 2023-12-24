@@ -62,7 +62,7 @@ public class Veriseti extends JPanel{
             x2_In[i] = (rand.nextDouble() - 0.5) *20; 
             
             //ilk input ikinciden buyukse hep 1 cevirmis
-            if(x1_In[i] > x2_In[i]){
+            if(x1_In[i] /*+7*/ > x2_In[i]){
                 y_Out[i] = 1;
             }
             else
@@ -117,9 +117,9 @@ public class Veriseti extends JPanel{
         
             g2.setColor(Color.black);
             g2.setStroke(new BasicStroke(2));
-           // g2.drawLine(800, 0, 0, 800);//y=x dogrusu
+            //g2.drawLine(800, 0, 0, 800);//y=x dogrusu
             
-            g2.drawLine(mapping(X1_KESEN), mapping(0), mapping(0), mapping(X2_KESEN));
+            g2.drawLine(mapping(X1_KESEN), (int)ekranMax-mapping(10),mapping(X2_KESEN), (int)ekranMax-mapping(-10));
     }
         
         //EKRAN KOORDINATLARINA GECIS
