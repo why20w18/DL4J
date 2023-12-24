@@ -14,16 +14,24 @@ x2 = y eksenini temsil ediyor
 ve bu verisetinde hep y=x'in altinda kalan kisimlar +1 ust kisminda kalan noktalar -1
 olarak etiketlendi
 
+x1 yesil
+
 */
 
 public class Veriseti extends JPanel{
     
     //girdiler
     public double[] x1_In , x2_In;
+
     //outputlar
     public int[] y_Out;
+    
     //veriseti buyuklugu
     public int buyukluk;
+    
+    //makinenin yaptigi tahminleride tutalim
+    public int[] makineTahmin;
+    
     
     public double ekranMax = 800f;
     public double ekranMin = 0f;
@@ -39,6 +47,7 @@ public class Veriseti extends JPanel{
         x1_In = new double[buyukluk];
         x2_In = new double[buyukluk];
         y_Out = new int[buyukluk];
+        
         
         //verisetini olusturma asamasi
         for(int i = 0 ; i < buyukluk ; i++){
@@ -67,6 +76,7 @@ public class Veriseti extends JPanel{
         
         g2.setColor(Color.black);
         //sadece inputlari yani x1 ve x2'leri ekrana basiyoruz
+        
         for(int i = 0 ; i < buyukluk ; i++){
             
             if(y_Out[i] == 1){
@@ -74,11 +84,18 @@ public class Veriseti extends JPanel{
             }
             else{
                 g2.setColor(Color.red);
-               
-
             }
-                                            //y=x icin asagi gidince y degeri sifira yaklasir
             g2.fillOval(mapping(x1_In[i]), (int)ekranMax-mapping(x2_In[i]), 12, 12);
+
+            //yukarida cizilenlerden dogru tahmin yapip cizilenlerin icini acik maviye boyayacagiz
+            if(makineTahmin[i] == y_Out[i]){ //makine dogru tahmin ettiyse
+                g2.setColor(Color.white);
+            }
+            else{
+                g2.setColor(Color.black);
+            }
+                                              //y=x icin asagi gidince y degeri sifira yaklasir bu sebeple cikarttik
+            g2.fillOval(mapping(x1_In[i])+2, (int)ekranMax-mapping(x2_In[i])+2, 6, 6);
             
         }//for
             
