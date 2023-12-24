@@ -11,6 +11,8 @@ public class Main {
         TemelPerceptron perceptron = new TemelPerceptron();
         Veriseti veriset = new Veriseti(75);
         
+        veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
+        
         JFrame Frame = new JFrame("Grafik Gosterim");
         Frame.add(veriset);
         Frame.setSize(800,800);
@@ -20,6 +22,7 @@ public class Main {
         
         double x1 = 0,x2 = 0;
         
+        //----------------------1.ASAMA---
         /*
         int i = 1;
         while(true){
@@ -30,8 +33,9 @@ public class Main {
         i++;
         }
         */
+        //----------------------2.ASAMA---
+        /*
         int t=1,cx = 0;
-
         while(t <= 1){
         for(int i = 0 ; i < veriset.buyukluk ; i++){
             int makineTahmin = perceptron.AktivasyonFonksiyon(veriset.x1_In[i], veriset.x2_In[i]);
@@ -54,7 +58,9 @@ public class Main {
         //MAX CX = 56
     t++;
     }//while
+    */    
         
+        //----------------------3.ASAMA---
         
         
         
