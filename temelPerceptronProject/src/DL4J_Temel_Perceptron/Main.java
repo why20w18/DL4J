@@ -12,7 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         TemelPerceptron perceptron = new TemelPerceptron();
-        Veriseti veriset = new Veriseti(75);
+        Veriseti veriset = new Veriseti(100);
         perceptron.randomAtamaWeight();
         
         Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
@@ -26,21 +26,10 @@ public class Main {
         Frame.setVisible(true);
         
         double x1 = 0,x2 = 0;
-        
-        //----------------------1.ASAMA---
-        /*
-        int i = 1;
-        while(true){
-        System.out.print("x1:");     x1 = scanner.nextDouble();
-        System.out.print("x2:");     x2 = scanner.nextDouble();
-        System.out.println("\n"+i+"- Output Layer:"+perceptron.AktivasyonFonksiyon(24, 15));   
-        
-        i++;
-        }
-        */
-        //----------------------2.ASAMA---
-        
+        //long ogrenmeBaslangic = 0;
+        //long ogrenmeBitis = 0;
         int t=1,cx = 0;
+        
         while(t <= 1){
         for(int i = 0 ; i < veriset.buyukluk ; i++){
             int makineTahmin = perceptron.AktivasyonFonksiyon(veriset.x1_In[i], veriset.x2_In[i]);
@@ -56,6 +45,7 @@ public class Main {
             cx++;
             
             
+        //ogrenmeBaslangic = System.currentTimeMillis();
         timer.scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run() {
@@ -68,52 +58,33 @@ public class Main {
         veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
         Frame.repaint();
         veriset.iTimer++;
-            if(veriset.iTimer == 10){
-                System.out.println("10");
-            }
-            
+        
+         /*if (veriset.iTimer >= 750) {
+                            System.out.println("ogrenme yeterli");
+                            timer.cancel(); 
+                        }*/
+        
+                        
+         veriset.X1_KESEN = perceptron.X1_KESTIGI();
+         veriset.X2_KESEN = perceptron.X2_KESTIGI();
+         
+         
             }//run
         },0,1000);
-          
-            
-            
-        }//for
+        
+     }//for
         
         System.out.printf("\nBasarili Tahmin Sayisi %d , T iterasyonu %d , Basari Yuzde %f",cx,t,(double)cx/veriset.buyukluk*100);
-        if(cx >= 50) System.out.print("------------------------------BASARI");
+        if(cx >= 50) System.out.print("-------------------------------------->%66 UZERINDE BASARI");
         cx = 0;
-        //MAX CX = 56
-    t++;
+        t++;
     }//while
         
-     
-        
-        //----------------------3.ASAMA---
-           
-        //olusturdugumuz ekranda canlý olarak egitim surecini gormek icin timer olusturuyoruz belli
-        //surede ekran guncellensin
         /*
-        Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
-        
-        timer.scheduleAtFixedRate(new TimerTask(){
-            @Override
-            public void run() {
-            //veri setinin icindeki degerleri alacak modeliEgit metodu icinde W ayarlamasi yapacak ve egitilecek
-            perceptron.modeliEgit(
-                    veriset.x1_In[veriset.iTimer % veriset.buyukluk], 
-                    veriset.x2_In[veriset.iTimer % veriset.buyukluk], 
-                    veriset.y_Out[veriset.iTimer % veriset.buyukluk]);
-            
-        veriset.makineTahmin = perceptron.makineTahminSeti(veriset.x1_In, veriset.x2_In, veriset.buyukluk);
-        Frame.repaint();
-        veriset.iTimer++;
-            if(veriset.iTimer == 10){
-                System.out.println("10");
-            }
-            
-            }//run
-        },0,100);
-      */
+        ogrenmeBitis = System.currentTimeMillis();
+        long ogrenmeSuresi = (ogrenmeBitis-ogrenmeBaslangic)/1000;
+        System.out.println("\n\nOgrenme Suresi: "+ogrenmeSuresi);
+       */
         
     }//main metod
     
