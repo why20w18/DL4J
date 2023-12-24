@@ -4,6 +4,10 @@ import java.util.Random;
 
 
 public class TemelPerceptron {
+    //BIAS TANIMLAMA
+    public double w0;
+    public int bias = 1;
+    
     //weightleri tanimlarim
     public double w1,w2;
     public double OgrenmeOrani = 0.1f;
@@ -12,6 +16,8 @@ public class TemelPerceptron {
     Random rand = new Random();
     public void randomAtamaWeight(){
         //0-1 arasi deger dondurur -1 ve 1 cekecegiz kullanýlcak aktivasyon fonksiyonuna bagli
+        w0 = (rand.nextDouble()-0.5)*2;
+        
         w1 = (rand.nextDouble()-0.5)*2;
         w2 = (rand.nextDouble()-0.5)*2;
         //System.out.print("\nw1:"+w1+" w2:"+w2);
@@ -63,6 +69,12 @@ public class TemelPerceptron {
     } 
     public double X2_KESTIGI(){
         return (-w1 * 0) / w2;
+    } 
+    public double X1T_KESTIGI(){
+        return (-w1 * 10) / w2;
+    } 
+    public double X2T_KESTIGI(){
+        return (-w1 * -10) / w2;
     } 
     
 }
