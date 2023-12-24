@@ -6,6 +6,7 @@ import java.util.Random;
 public class TemelPerceptron {
     //weightleri tanimlarim
     public double w1,w2;
+    public double OgrenmeOrani = 0.1f;
 
      //baslangicta weightlere random deger atama
     Random rand = new Random();
@@ -36,6 +37,24 @@ public class TemelPerceptron {
             return -1;
         
     }
+    //verisetinde olusturulan makineTahmin dizisini buradan dolduracagiz 3.ASAMA icin
     
+    public int[] makineTahminSeti(double[] x1_in , double[] x2_in , int buyukluk){
+        int[] sonuclar = new int[buyukluk];
+        for(int i = 0 ; i < buyukluk ; i++){
+            sonuclar[i] = AktivasyonFonksiyon(x1_in[i], x2_in[i]);
+        }
+        return sonuclar;
+    }
+    
+    //agirliklari
+    public void modeliEgit(double x1_In , double x2_In , int y_Out){
+        
+        int aktivasyonCiktisi = AktivasyonFonksiyon(x1_In, x2_In);
+        int ciktiFark = y_Out - aktivasyonCiktisi; // 0 veya -2 veya 2 çýkabilir çýktýFark
+        
+        w1 += ciktiFark*x1_In * OgrenmeOrani;
+        w2 += ciktiFark*x2_In * OgrenmeOrani;
+    }
     
 }
