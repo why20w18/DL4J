@@ -57,4 +57,12 @@ public class TemelPerceptron {
         w2 += ciktiFark*x2_In * OgrenmeOrani;
     }
     
+    //PERCEPTRONUN EKSENI KESTIGI NOKTALAR
+    public double X1_KESTIGI(){
+        return (-w2 * 0) / w1;
+    } 
+    public double X2_KESTIGI(){
+        return (-w1 * 0) / w2;
+    } 
+    
 }
