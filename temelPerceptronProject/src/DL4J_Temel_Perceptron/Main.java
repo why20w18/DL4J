@@ -1,6 +1,7 @@
 package DL4J_Temel_Perceptron;
 
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 public class Main {
     
@@ -10,6 +11,12 @@ public class Main {
         TemelPerceptron perceptron = new TemelPerceptron();
         Veriseti veriset = new Veriseti(75);
         
+        JFrame Frame = new JFrame("Grafik Gosterim");
+        Frame.add(veriset);
+        Frame.setSize(800,800);
+        Frame.setDefaultCloseOperation(Frame.EXIT_ON_CLOSE);
+        Frame.setResizable(false);
+        Frame.setVisible(true);
         
         double x1 = 0,x2 = 0;
         
