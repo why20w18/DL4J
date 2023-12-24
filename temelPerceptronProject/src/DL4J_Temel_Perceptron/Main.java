@@ -12,7 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         TemelPerceptron perceptron = new TemelPerceptron();
-        Veriseti veriset = new Veriseti(100);
+        Veriseti veriset = new Veriseti(177);
         perceptron.randomAtamaWeight();
         
         Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
@@ -63,14 +63,14 @@ public class Main {
                             System.out.println("ogrenme yeterli");
                             timer.cancel(); 
                         }*/
-        
+         
                         
-         veriset.X1_KESEN = perceptron.X1_KESTIGI();
-         veriset.X2_KESEN = perceptron.X2_KESTIGI();
+         veriset.X1_KESEN = perceptron.X1T_KESTIGI();
+         veriset.X2_KESEN = perceptron.X2T_KESTIGI();
          
          
             }//run
-        },0,1000);
+        },0,100); //100 dersek daha hýzlý cagirir ms cinsinden
         
      }//for
         
