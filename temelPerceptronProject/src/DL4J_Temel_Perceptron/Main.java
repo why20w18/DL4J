@@ -23,8 +23,9 @@ public class Main {
         i++;
         }
         */
-        int t=0,cx = 0;
-        while(t < 1){
+        int t=1,cx = 0;
+
+        while(t <= 1){
         for(int i = 0 ; i < veriset.buyukluk ; i++){
             int makineTahmin = perceptron.AktivasyonFonksiyon(veriset.x1_In[i], veriset.x2_In[i]);
             System.out.print("#\nIterasyon:"+(i+1)
@@ -35,17 +36,21 @@ public class Main {
                             + "Output:"+veriset.y_Out[i]+"\n"
                                     + "Makine Tahmin:"+makineTahmin+"\n");
             //basarili tahminleri sayalim
-            if(veriset.y_Out[i] == /*perceptron.AktivasyonFonksiyon(veriset.x1_In[i], veriset.x2_In[i])
-                    ikinci cagirmada weight degerleri degisiyor bunlari dongu basinda tutup kiyas yapmaliyiz*/
-                    makineTahmin)
+            if(veriset.y_Out[i] == makineTahmin)
             cx++;
             
         }//for
+        
+        System.out.printf("\nBasarili Tahmin Sayisi %d , T iterasyonu %d , Basari Yuzde %f",cx,t,(double)cx/veriset.buyukluk*100);
+        if(cx >= 50) System.out.print("------------------------------BASARI");
+        cx = 0;
+        //MAX CX = 56
     t++;
-    }
-        System.out.println("\n\nBasarili Tahmin Sayisi:"+cx);
-        System.out.printf("Basari Yuzdesi %.2f:\n",(double)cx/veriset.buyukluk*100);
-    
-    }
+    }//while
+        
+        
+        
+        
+    }//main metod
     
 }
