@@ -17,7 +17,7 @@ public class TemelPerceptron {
     }
     
     
-    //agirlik ve inputlarin carpilacagi fonksiyon
+    //agirlik ve inputlarin carpilacagi fonksiyon // input double
     public double toplamaFonksiyon(double x1 , double x2){
         randomAtamaWeight();
         double toplam = ((w1 * x1) + (w2 * x2));
@@ -25,8 +25,8 @@ public class TemelPerceptron {
     }
     
    
-    //gecici aktivasyon fonksiyonu
-    public double tempAktivasyonFonksiyon(double x1 , double x2){
+    //aktivasyon fonksiyonu // output int
+    public int AktivasyonFonksiyon(double x1 , double x2){
         
         double toplam = toplamaFonksiyon(x1, x2);
         
