@@ -20,7 +20,7 @@ public class TemelPerceptron {
     
     //agirlik ve inputlarin carpilacagi fonksiyon // input double
     public double toplamaFonksiyon(double x1 , double x2){
-        randomAtamaWeight();
+        //randomAtamaWeight(); 
         double toplam = ((w1 * x1) + (w2 * x2));
         return toplam;
     }
