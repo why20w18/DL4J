@@ -35,6 +35,10 @@ public class Veriseti extends JPanel{
     //timer icin dongu degiskenini buraya olusturup buradan eriselim
     public int iTimer = 0;
     
+    //EKSENLERI KESTIGI NOKTALAR
+    
+    public double X1_KESEN,X2_KESEN;
+    
     
     public double ekranMax = 800f;
     public double ekranMin = 0f;
@@ -113,10 +117,12 @@ public class Veriseti extends JPanel{
         
             g2.setColor(Color.black);
             g2.setStroke(new BasicStroke(2));
-            g2.drawLine(800, 0, 0, 800);//y=x dogrusu
+           // g2.drawLine(800, 0, 0, 800);//y=x dogrusu
+            
+            g2.drawLine(mapping(X1_KESEN), mapping(0), mapping(0), mapping(X2_KESEN));
     }
-    
-        //x1 ve x2 araliklari -10 ve +10 arasinda panel 500 x 500 aralik cekecegiz
+        
+        //EKRAN KOORDINATLARINA GECIS
         public int mapping(double input1_2){
          return (int)(ekranMin+(ekranMax-ekranMin) * (input1_2 -setMin) / (setMax -setMin));
         }
