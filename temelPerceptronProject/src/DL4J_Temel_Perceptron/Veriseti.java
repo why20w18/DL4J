@@ -32,6 +32,9 @@ public class Veriseti extends JPanel{
     //makinenin yaptigi tahminleride tutalim
     public int[] makineTahmin;
     
+    //timer icin dongu degiskenini buraya olusturup buradan eriselim
+    public int iTimer = 0;
+    
     
     public double ekranMax = 800f;
     public double ekranMin = 0f;
