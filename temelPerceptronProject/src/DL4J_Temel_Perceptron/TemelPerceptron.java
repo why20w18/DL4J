@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class TemelPerceptron {
     //weightleri tanimlarim
-    double w1,w2;
+    public double w1,w2;
 
      //baslangicta weightlere random deger atama
     Random rand = new Random();
@@ -13,7 +13,7 @@ public class TemelPerceptron {
         //0-1 arasi deger dondurur -1 ve 1 cekecegiz kullanýlcak aktivasyon fonksiyonuna bagli
         w1 = (rand.nextDouble()-0.5)*2;
         w2 = (rand.nextDouble()-0.5)*2;
-        System.out.print("\nw1:"+w1+" w2:"+w2);
+        //System.out.print("\nw1:"+w1+" w2:"+w2);
     }
     
     
