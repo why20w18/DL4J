@@ -62,7 +62,7 @@ public class Veriseti extends JPanel{
             x2_In[i] = (rand.nextDouble() - 0.5) *20; 
             
             //ilk input ikinciden buyukse hep 1 cevirmis
-            if(x1_In[i] /*+7*/ > x2_In[i]){
+            if(x1_In[i] +7/*+7*/ > x2_In[i]){
                 y_Out[i] = 1;
             }
             else
@@ -92,7 +92,7 @@ public class Veriseti extends JPanel{
             else{
                 g2.setColor(Color.red);
             }
-            g2.fillOval(mapping(x1_In[i]), (int)ekranMax-mapping(x2_In[i]), 12, 12);
+            g2.fillOval(mapping(x1_In[i]), (int)ekranMax-mapping(x2_In[i]), 14, 12);
 
             //yukarida cizilenlerden dogru tahmin yapip cizilenlerin icini acik maviye boyayacagiz
             if(makineTahmin[i] == y_Out[i]){ //makine dogru tahmin ettiyse
@@ -102,7 +102,7 @@ public class Veriseti extends JPanel{
                 g2.setColor(Color.black);
             }
                                               //y=x icin asagi gidince y degeri sifira yaklasir bu sebeple cikarttik
-            g2.fillOval(mapping(x1_In[i])+2, (int)ekranMax-mapping(x2_In[i])+2, 6, 6);
+            g2.fillOval(mapping(x1_In[i])+2, (int)ekranMax-mapping(x2_In[i])+2, 8, 8);
             
         }//for
             
@@ -119,7 +119,10 @@ public class Veriseti extends JPanel{
             g2.setStroke(new BasicStroke(2));
             //g2.drawLine(800, 0, 0, 800);//y=x dogrusu
             
-            g2.drawLine(mapping(X1_KESEN), (int)ekranMax-mapping(10),mapping(X2_KESEN), (int)ekranMax-mapping(-10));
+            
+            
+            g2.drawLine(mapping(10), (int)ekranMax-mapping(X1_KESEN),mapping(-10), (int)ekranMax-mapping(X2_KESEN));
+           // g2.drawLine(mapping(X1_KESEN), (int)ekranMax-mapping(0),mapping(0),(int)ekranMax-mapping(X2_KESEN));
     }
         
         //EKRAN KOORDINATLARINA GECIS
