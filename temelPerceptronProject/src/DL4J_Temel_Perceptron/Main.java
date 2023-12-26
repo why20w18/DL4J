@@ -12,7 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         TemelPerceptron perceptron = new TemelPerceptron();
-        Veriseti veriset = new Veriseti(177);
+        Veriseti veriset = new Veriseti(400);
         perceptron.randomAtamaWeight();
         
         Timer timer = new Timer(); //swing timer degil util timer kullanacagiz
@@ -75,7 +75,7 @@ public class Main {
      }//for
         
         System.out.printf("\nBasarili Tahmin Sayisi %d , T iterasyonu %d , Basari Yuzde %f",cx,t,(double)cx/veriset.buyukluk*100);
-        if(cx >= 50) System.out.print("-------------------------------------->%66 UZERINDE BASARI");
+        if(cx >= veriset.buyukluk/2) System.out.print("-------------------------------------->%50 UZERINDE BASARI");
         cx = 0;
         t++;
     }//while
