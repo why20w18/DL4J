@@ -10,7 +10,7 @@ public class TemelPerceptron {
     
     //weightleri tanimlarim
     public double w1,w2;
-    public double OgrenmeOrani = 0.1f;
+    public double OgrenmeOrani = 0.05f;
 
      //baslangicta weightlere random deger atama
     Random rand = new Random();
@@ -27,7 +27,7 @@ public class TemelPerceptron {
     //agirlik ve inputlarin carpilacagi fonksiyon // input double
     public double toplamaFonksiyon(double x1 , double x2){
         //randomAtamaWeight(); 
-        double toplam = ((w1 * x1) + (w2 * x2));
+        double toplam = ((w0*bias)+(w1 * x1) + (w2 * x2));
         return toplam;
     }
     
@@ -59,22 +59,25 @@ public class TemelPerceptron {
         int aktivasyonCiktisi = AktivasyonFonksiyon(x1_In, x2_In);
         int ciktiFark = y_Out - aktivasyonCiktisi; // 0 veya -2 veya 2 çýkabilir çýktýFark
         
+        w0 += ciktiFark * bias * OgrenmeOrani;
         w1 += ciktiFark*x1_In * OgrenmeOrani;
         w2 += ciktiFark*x2_In * OgrenmeOrani;
     }
     
     //PERCEPTRONUN EKSENI KESTIGI NOKTALAR
     public double X1_KESTIGI(){
-        return (-w2 * 0) / w1;
+        return ((-w2 * 0)-w0) / w1;
     } 
     public double X2_KESTIGI(){
-        return (-w1 * 0) / w2;
+        return ((-w1 * 0)-w0) / w2;
     } 
+    
+    
     public double X1T_KESTIGI(){
-        return (-w1 * 10) / w2;
+        return ((-w1 * 10)-w0) / w2;
     } 
     public double X2T_KESTIGI(){
-        return (-w1 * -10) / w2;
+        return ((-w1 * -10)-w0) / w2;
     } 
     
 }
